@@ -1,0 +1,49 @@
+
+
+If you only provide the repository name, Buildkite will search for it in the buildkite-plugins organization. i.e. `docker-compose` will attempt to connect to `https://github.com/buildkite-plugins/docker-compose-buildkite-plugin`.
+
+```yml
+steps:
+  - command: test.sh
+    plugins:
+      docker-compose:
+        run: app
+```
+
+Providing the organization slug as well enables the use of plugins that are outside of the offically supported buildkite plugins. i.e. `sj26/docker-compose` will attempt to connect to `https://github.com/sj26/docker-compose-buildkite-plugin`.
+
+```yml
+steps:
+  - command: test.sh
+    plugins:
+      sj26/docker-compose:
+        run: app
+```
+
+Using the entire url allows you to utilise repositories outside of Github. i.e. `https://bitbucket.org/sj26/docker-compose`. 
+
+```yml
+steps:
+  - command: test.sh
+    plugins:
+      https://bitbucket.org/sj26/docker-compose:
+        run: app
+```
+
+
+# Command steps
+<table>
+  <tr>
+    <td><code>plugins</code></td>
+    <td>
+      A list of plugins that you require for this step. <br>
+      <em>Example:</em> <code>docker-compose</code><br>
+      <em>Example:</em> <code>harrietgl/myplugin</code>
+    </td>
+  </tr>
+</table>
+
+
+# Troubleshooting
+
+"Buildkite Error: Can't checkout plugins without a `plugins-path`"
